@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droplets of Dew | Marouane Kermaoui</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #050a12;
+            --card-bg: #0d1520;
+            --text: #e0e6ed;
+            --accent: #5a7d9a; 
+            --soft: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.05);
+            --gold: #d4af37;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(28, 45, 74, 0.4) 0%, rgba(5, 10, 18, 1) 100%);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('Droplets of dew.jpg') center/cover no-repeat;
+            opacity: 0.12;
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 5.5rem);
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        /* ===== MAIN CONTENT SECTION ===== */
+        section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+
+        .book-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .book-cover-side {
+            flex: 1;
+            min-width: 320px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 20px rgba(90, 125, 154, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-15px) rotate(1deg);
+        }
+
+        .details-side {
+            flex: 1.5;
+            min-width: 320px;
+        }
+
+        .section-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            background: var(--glass);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-left-color: var(--accent);
+        }
+
+        .info-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ===== PREVIEW SECTION ===== */
+        .preview-section {
+            background: linear-gradient(to bottom, transparent, #0d1520, transparent);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .badge-gratuit {
+            background: var(--gold);
+            color: #000;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .preview-box {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #fff;
+            color: #2c3e50;
+            padding: 60px;
+            border-radius: 2px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            text-align: left;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            line-height: 1.8;
+        }
+
+        .preview-box::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 180px;
+            background: linear-gradient(transparent, #fff);
+        }
+
+        /* ===== BUTTONS ===== */
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary { background: #fff; color: var(--bg); }
+        .btn-outline { border: 1px solid var(--accent); color: #fff; }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            color: #555;
+            border-top: 1px solid var(--glass);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .preview-box { padding: 30px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="content">
+            <h1>Droplets of Dew</h1>
+            <p style="text-transform: uppercase; font-weight: 600; letter-spacing: 4px; color: var(--accent); margin-bottom: 30px; font-size: 1rem; opacity: 0.9;">
+                A Breathtaking Psychological Film In Your Hands
+            </p>
+            
+            <div style="max-width: 900px; margin: 0 auto; position: relative; padding: 40px; background: rgba(5, 10, 18, 0.6); border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
+                
+                <i class="fa-solid fa-quote-left" style="position: absolute; top: -15px; left: 40px; font-size: 2.5rem; color: var(--accent); opacity: 0.5;"></i>
+
+                <div style="font-size: 1.15rem; line-height: 1.8; color: #e2e8f0; text-align: justify; font-family: 'EB Garamond', serif;">
+                    <p style="margin-bottom: 25px;">
+                        In this novel, you stand before a man for whom prison walls were not his true confinement. Instead, his mask was the cage—fused so deeply to his skin that tearing it away meant bleeding shards of his own soul. Reading <strong>"Yousef"</strong> is not just following events; it is watching <span style="color: var(--accent);">"Droplets of Dew"</span> fall slowly upon a shattered consciousness, washing away the dust of twenty-five years of silence and injustice.
+                    </p>
+
+                    <p style="margin-bottom: 25px; border-left: 3px solid var(--accent); padding-left: 20px; background: rgba(90, 125, 154, 0.05); font-style: italic;">
+                        The novel leaves you with a bitter question: Are we truly who we see in the mirror? Or are we merely "versions" crafted by expectations and disappointments? It is a journey into the philosophy of pain; the hero does not seek innocence proven by papers, but seeks his <strong>"lost face"</strong> amidst a crowd of masks.
+                    </p>
+
+                    <p style="margin-bottom: 0;">
+                        Despite the darkness of the beginnings, the author leaves you with a thin thread of light—like that which seeps through the cracks of an old cell—to tell you that <span style="color: var(--accent); font-weight: bold;">a scar is not a mark of ugliness, but the only proof that you survived.</span> It is a call to stop apologizing to the world for our truth and to start searching for the "home" that lives within us.
+                    </p>
+                </div>
+
+                <i class="fa-solid fa-quote-right" style="position: absolute; bottom: -15px; right: 40px; font-size: 2.5rem; color: var(--accent); opacity: 0.5;"></i>
+            </div>
+            
+            <div style="margin-top: 45px;">
+                <a href="#details" class="btn btn-primary">
+                    Begin the Journey <i class="fa-solid fa-chevron-down" style="margin-left: 10px; font-size: 0.8rem;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="details">
+        <div class="book-wrapper">
+            <div class="book-cover-side">
+                <img src="Droplets of dew.jpg" alt="Droplets of Dew Cover" class="book-cover">
+                <div style="text-align: center; margin-top: 30px; padding: 20px; position: relative;">
+                    <div style="width: 50px; height: 2px; background: var(--accent); margin: 0 auto 20px; opacity: 0.5;"></div>
+                    <h3 style="font-family: 'EB Garamond', serif; font-size: 1.8rem; color: #fff; line-height: 1.4; max-width: 600px; margin: 0 auto; font-weight: 400; font-style: italic;">
+                        "This book <span style="color: var(--accent); font-weight: 700;">sees you</span>, and in its pages—may you begin to see <span style="color: var(--accent); font-weight: 700;">yourself</span> again."
+                    </h3>
+                    <div style="width: 50px; height: 2px; background: var(--accent); margin: 20px auto 0; opacity: 0.5;"></div>
+                </div>
+            </div>
+
+            <div class="details-side">
+                <h2 class="section-title">Book Specifications</h2>
+                <p style="margin-bottom: 30px; color: var(--soft); font-size: 1.1rem;">
+                    A psychological thriller diving into the depths of human memory, where the lines between reality and mirage fade away.
+                </p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Title</span>
+                        <span class="info-value">Droplets of Dew</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Author</span>
+                        <span class="info-value">Marouane Kermaoui</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Language</span>
+                        <span class="info-value">English</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ISBN</span>
+                        <span class="info-value">978-9920-24-199-1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Pages</span>
+                        <span class="info-value">302 Pages</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Dimensions</span>
+                        <span class="info-value">14 × 21 cm</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Format</span>
+                        <span class="info-value">Digital (PDF)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Actual Downloads</span>
+                        <span class="info-value" id="download-count">+1,250</span>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="https://ko-fi.com/s/80d6a66cc6" class="btn btn-primary" onclick="updateDownloads()">Get Your Copy ($17)</a>
+                    <a href="#preview" class="btn btn-outline">Read Free Sample</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" id="preview">
+        <div class="badge-gratuit">Free Preview - Chapter One</div>
+        <h2 style="font-family: 'EB Garamond', serif; font-size: 2.8rem; color: #fff; margin-bottom: 10px;">Step into Yousef's World..</h2>
+        <p style="color: var(--soft); margin-bottom: 40px;">Read the opening of the journey before you decide.</p>
+        
+        <div class="preview-box">
+            <h3 style="font-family: 'EB Garamond', serif; font-size: 2.2rem; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 30px; text-align: center;">Chapter I: When the Face Fell</h3>
+            
+            <p style="font-style: italic; color: #555; background: #f9f9f9; padding: 20px; border-left: 4px solid var(--accent); margin-bottom: 30px;">
+                "Some scream to be heard... others bleed in silence, praying that the scars will speak. This is not a cry for help, but a mirror held in the dark, waiting for a soul brave enough to ignite a flame."
+            </p>
+
+            <p style="margin-bottom: 20px;">
+                My name is Yousef. I did not survive; I disappeared... and this is all that remains. It is said that a person does not truly know themselves until they love, but I learned that love does not know you—it strips you until nothing is left but a tiny core hiding in a forgotten corner of your soul.
+            </p>
+
+            <p style="margin-bottom: 20px;">
+                I walked through the city like someone dragging their shadow on the asphalt, unsure whether I was looking for a path or running from one. Have you ever felt that your existence walks one step ahead of you? That you are following yourself as if tracing an echo you haven't made yet?
+            </p>
+
+            <p style="margin-bottom: 20px;">
+                That feeling, my friend, is what some call "consciousness," and what I call the "curse" that made me see more than I should. Everything here repeats itself... the same streets, the same faces, and the same fear disguised as a smile.
+            </p>
+
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 250px; background: linear-gradient(transparent, #fff 80%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px;">
+                <div style="text-align: center;">
+                    <p style="color: var(--accent); font-weight: bold; margin-bottom: 15px;">260 more pages of mystery await you...</p>
+                    <a href="https://ko-fi.com/s/80d6a66cc6" class="btn btn-primary" style="box-shadow: 0 10px 20px rgba(0,0,0,0.1);">Get the Full Version Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+        <a href="https://drive.google.com/file/d/1Yt77p0O00vIiqj-uD9bjqmSr2wI6OFNn/view?usp=drive_link" class="btn btn-outline">
+
+            <i class="fa-solid fa-file-pdf" style="margin-right: 10px;"></i> Download Free Sample (PDF)
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Marouane Kermaoui. <br>
+        <span style="font-size: 0.75rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px;">All Rights Reserved.</span>
+    </footer>
+
+    <script>
+        function updateDownloads() {
+            let count = localStorage.getItem('actual_downloads') || 1250;
+            count = parseInt(count) + 1;
+            localStorage.setItem('actual_downloads', count);
+            document.getElementById('download-count').innerText = "+" + count.toLocaleString();
+        }
+
+        window.onload = function() {
+            let savedCount = localStorage.getItem('actual_downloads') || 1250;
+            document.getElementById('download-count').innerText = "+" + parseInt(savedCount).toLocaleString();
+        };
+    </script>
+
+</body>
+</html>
